@@ -30,6 +30,7 @@ struct TutorialPopup: View {
             }
 
             .tabViewStyle(.page)
+            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
 
           
             }
