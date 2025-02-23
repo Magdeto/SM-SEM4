@@ -14,7 +14,7 @@ struct HomeView: View {
     @State private var currentLetter = ""
     @State private var lastReleaseTime = Date()
     @State private var isFirstPress = true
-    @State private var showTutorial = false
+    @State private var showTutorial = true
     
     // MARK: - Constants
     let letterSpace: TimeInterval = 1.5
@@ -55,13 +55,22 @@ struct HomeView: View {
                 }
                 .padding()
                 
-                Spacer() // Push the button to the bottom
+                Spacer()
                 
                 // Morse Input Button
                 MorseButton { symbol in
                     handleSymbolInput(symbol)
                 }
                 .padding(.bottom, 20)
+                Button(action: {
+                                      clearText()
+                                  }) {
+                                      Image(systemName: "trash.fill")
+                                          .font(.title)
+                                          .foregroundColor(.red)
+                                          .padding()
+                                  }
+                
             }
             .sheet(isPresented: $showTutorial) {
                 TutorialPopup() // Show tutorial as a sheet
@@ -69,9 +78,7 @@ struct HomeView: View {
         }
     }
     
-    // MARK: - Logic Functions
     
-    /// Handles Morse symbol input and spacing logic
     private func handleSymbolInput(_ symbol: String) {
         let now = Date()
         let timeSinceLastRelease = now.timeIntervalSince(lastReleaseTime)
@@ -112,6 +119,13 @@ struct HomeView: View {
             }
             currentLetter = ""
         }
+    }
+    /// Clears the current Morse and decoded text
+    private func clearText() {
+        currentMorse = ""
+        decodedText = ""
+        currentLetter = ""
+        isFirstPress = true
     }
 }
 #Preview {
