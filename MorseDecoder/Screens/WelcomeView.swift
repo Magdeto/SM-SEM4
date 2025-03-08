@@ -8,8 +8,6 @@
 import SwiftUI
 struct WelcomeView: View {
     var body: some View {
-        NavigationView {
-            
             VStack {
                 Text("Welcome to Magda's Morse Decoder!")
                     .font(.largeTitle)
@@ -19,9 +17,7 @@ struct WelcomeView: View {
                 
                 NavigationLink(destination: HomeView()) {
                     Text("Start decoding")
-                        .frame(maxWidth: .infinity) // Take full width
-                        .padding(.vertical) // Add vertical padding
-                        .background(Color.black)
+                        .frame(maxWidth: .infinity)                         .padding(.vertical)                         .background(Color.black)
                         .foregroundStyle(.white)
                         .cornerRadius(24)
                 }
@@ -30,7 +26,7 @@ struct WelcomeView: View {
         
         }
     }
-}
+
 #Preview {
     WelcomeView()
 }

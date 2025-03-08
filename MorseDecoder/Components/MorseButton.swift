@@ -19,7 +19,7 @@ struct MorseButton: View {
         Button(action: {}) {
             Text(isPressed ? "Release to End" : "Press to Start")
                 .padding()
-                .frame(maxWidth: .infinity) // Take all available width
+                .frame(maxWidth: .infinity) 
                 .background(isPressed ? Color.gray : Color.black)
                 .foregroundStyle(isPressed ? Color.black : Color.white)
                 .font(.headline)

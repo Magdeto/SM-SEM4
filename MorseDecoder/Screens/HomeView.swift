@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    // MARK: - State Variables
     @State private var decodedText = ""
     @State private var currentMorse = ""
     @State private var currentLetter = ""
@@ -16,7 +15,6 @@ struct HomeView: View {
     @State private var isFirstPress = true
     @State private var showTutorial = true
     
-    // MARK: - Constants
     let letterSpace: TimeInterval = 1.5
     let wordSpace: TimeInterval = 2.5
     
@@ -24,7 +22,6 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                // Top corner menu
                 HStack {
                     Spacer()
                     Button(action: {
@@ -73,8 +70,7 @@ struct HomeView: View {
                 
             }
             .sheet(isPresented: $showTutorial) {
-                TutorialPopup() // Show tutorial as a sheet
-            }
+                TutorialPopup()             }
         }
     }
     
@@ -109,7 +105,6 @@ struct HomeView: View {
         print("Current Morse Sequence: \(currentMorse)")
     }
     
-    /// Decodes the current Morse letter and resets it
     private func decodeCurrentLetter() {
         if !currentLetter.isEmpty {
             if let letter = MorseDictionary.morseCodeDict[currentLetter] {
@@ -120,7 +115,6 @@ struct HomeView: View {
             currentLetter = ""
         }
     }
-    /// Clears the current Morse and decoded text
     private func clearText() {
         currentMorse = ""
         decodedText = ""
